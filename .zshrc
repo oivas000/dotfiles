@@ -1,7 +1,10 @@
+#!/bin/zsh
+# Created by @oivas000
 
 colorscript random
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -78,36 +81,36 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+#export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+#if [[ -n $SSH_CONNECTION ]]; then
+#    export EDITOR='vim'
+#else
+#    export EDITOR='mvim'
+#fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+#alias zshconfig="mate ~/.zshrc"
+#alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 #
 # alias
-alias e='e(){ openssl enc -chacha20 -base64 -salt -p -iter 7572 -md sha512 $3 $4 $5 $6 $7 $8 $9 -in $1 -out $2 };e'
-alias d='d(){ openssl enc -chacha20 -d -base64 -salt -p -iter 7572 -md sha512 $3 $4 $5 $6 $7 $8 $9 -in $1 -out $2 };d'
-alias ea='ea(){ openssl enc -aes-256-cbc -base64 -salt -p -iter 7572 -md sha512 $3 $4 $5 $6 $7 $8 $9 -in $1 -out $2 };ea'
-alias da='da(){ openssl enc -aes-256-cbc -d -base64 -salt -p -iter 7572 -md sha512 $3 $4 $5 $6 $7 $8 $9 -in $1 -out $2 };da'
+alias ec='ec() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 $f $f.ec $password; done }; ec $@'
+alias dc='dc() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 -d $f ${f%.ec} $password; done }; dc $@'
+alias ecz='ecz() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do 7z a -bb -y -m0=LZMA2 -mx=9 -md=64M -- $f.7z $f; XChacha20_Poly1305 $f.7z $f.7z.ec $password; rm -r $f.7z; done }; ecz $@'
+alias dcz='dcz() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 -d $f ${f%.ec} $password; 7z x -bb -y -- ${f%.ec}; rm -r ${f%.ec}; done }; dcz $@'
 alias s='sudo'
 alias l='ls -alt --color=auto'
 alias dir='dir --color=auto'
@@ -117,22 +120,23 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias c='clear'
 
-#####################################################
-# Auto completion / suggestion
-# Mixing zsh-autocomplete and zsh-autosuggestions
-# Requires: zsh-autocomplete (custom packaging by Parrot Team)
-# Jobs: suggest files / foldername / histsory bellow the prompt
-# Requires: zsh-autosuggestions (packaging by Debian Team)
-# Jobs: Fish-like suggestion for command history
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# Select all suggestion instead of top on result only
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-select
-zstyle ':autocomplete:*' min-input 2
-bindkey $key[Up] up-line-or-history
-bindkey $key[Down] down-line-or-history
-
+if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && [[ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+    #####################################################
+    # Auto completion / suggestion
+    # Mixing zsh-autocomplete and zsh-autosuggestions
+    # Requires: zsh-autocomplete (custom packaging by Parrot Team)
+    # Jobs: suggest files / foldername / histsory bellow the prompt
+    # Requires: zsh-autosuggestions (packaging by Debian Team)
+    # Jobs: Fish-like suggestion for command history
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    # Select all suggestion instead of top on result only
+    zstyle ':autocomplete:tab:*' insert-unambiguous yes
+    zstyle ':autocomplete:tab:*' widget-style menu-select
+    zstyle ':autocomplete:*' min-input 2
+    bindkey $key[Up] up-line-or-history
+    bindkey $key[Down] down-line-or-history
+fi
 
 # Save type history for completion and easier life
 HISTFILE=~/.zsh_history
