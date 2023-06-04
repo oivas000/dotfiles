@@ -2,6 +2,7 @@
 # Created by @oivas000
 
 colorscript random
+#source ~/.local/bin/XChacha20_Poly1305.zsh
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
@@ -107,10 +108,15 @@ source $ZSH/oh-my-zsh.sh
 #
 #
 # alias
-alias ec='ec() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 $f $f.ec $password; done }; ec $@'
-alias dc='dc() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 -d $f ${f%.ec} $password; done }; dc $@'
-alias ecz='ecz() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do 7z a -bb -y -m0=LZMA2 -mx=9 -md=64M -- $f.7z $f; XChacha20_Poly1305 $f.7z $f.7z.ec $password; rm -r $f.7z; done }; ecz $@'
-alias dcz='dcz() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do XChacha20_Poly1305 -d $f ${f%.ec} $password; 7z x -bb -y -- ${f%.ec}; rm -r ${f%.ec}; done }; dcz $@'
+alias eco='XChacha20_Poly1305.zsh'
+alias dco='XChacha20_Poly1305.zsh dco'
+alias ec0x='XChacha20_Poly1305.zsh ec0x'
+alias ec9x='XChacha20_Poly1305.zsh ec9x'
+alias ec0z='XChacha20_Poly1305.zsh ec0z'
+alias ec9z='XChacha20_Poly1305.zsh ec9z'
+alias dcz='XChacha20_Poly1305.zsh dcz'
+alias dcx='XChacha20_Poly1305.zsh dcx'
+alias pdf2jpeg='pdftoppm -jpeg $1 $2'
 alias s='sudo'
 alias l='ls -alt --color=auto'
 alias dir='dir --color=auto'
