@@ -6,6 +6,8 @@ colorscript random
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+export MODULAR_HOME="/home/oivas000/.modular"
+export PATH="/home/oivas000/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -108,8 +110,8 @@ source $ZSH/oh-my-zsh.sh
 #
 #
 # alias
-alias eco='XChacha20_Poly1305.zsh'
-alias dco='XChacha20_Poly1305.zsh dco'
+alias eco='XChacha20_Poly1305'
+alias dco='XChacha20_Poly1305 -d'
 alias ec0x='XChacha20_Poly1305.zsh ec0x'
 alias ec9x='XChacha20_Poly1305.zsh ec9x'
 alias ec0z='XChacha20_Poly1305.zsh ec0z'
@@ -118,7 +120,8 @@ alias dcz='XChacha20_Poly1305.zsh dcz'
 alias dcx='XChacha20_Poly1305.zsh dcx'
 alias pdf2jpeg='pdftoppm -jpeg $1 $2'
 alias s='sudo'
-alias l='ls -alt --color=auto'
+alias l='ls -alht --color=auto'
+alias b='batcat'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -149,3 +152,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt no_extended_history
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -1,8 +1,6 @@
 #!/bin/zsh
 # Created by @oivas000
 
-eco() { XChacha20_Poly1305 };
-dco() { XChacha20_Poly1305 -d };
 ec0x() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do xz -zc0T0 $f | XChacha20_Poly1305 - $f.xz.ec $password; done };
 ec9x() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do xz -zec9T0 $f | XChacha20_Poly1305 - $f.xz.ec $password; done };
 ec0z() { echo -n "Enter your password: "; read -rs password; echo ""; for f in "${@}"; do 7z a -bb -y -mx=0 -- $f.7z $f; XChacha20_Poly1305 $f.7z $f.7z.ec $password; rm -r $f.7z; done };
