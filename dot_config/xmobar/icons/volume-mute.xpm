@@ -1,0 +1,33 @@
+/* XPM */
+static char *volume_mute[] = {
+/* columns rows colors chars-per-pixel */
+"24 24 3 1 ",
+"  c red",
+". c white",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXX..XXXXXXXXXXXXXX",
+"XXXXXXX...XXXXXXXXXXXXXX",
+"XXXXXX....XXXXXXXXXXXXXX",
+"XXXXX.....XXXXXXXXXXXXXX",
+"XXXX......XXXXXXXXXXXXXX",
+"..........XXX  XXXXXX  X",
+"..........XXXX  XXXX  XX",
+"..........XXXXX  XX  XXX",
+"..........XXXXXX    XXXX",
+"..........XXXXXXX  XXXXX",
+"..........XXXXXX    XXXX",
+"..........XXXXX  XX  XXX",
+"..........XXXX  XXXX  XX",
+"..........XXX  XXXXXX  X",
+"..........XXXXXXXXXXXXXX",
+"XXXX......XXXXXXXXXXXXXX",
+"XXXXX.....XXXXXXXXXXXXXX",
+"XXXXXX....XXXXXXXXXXXXXX",
+"XXXXXXX...XXXXXXXXXXXXXX",
+"XXXXXXXX..XXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXX"
+};

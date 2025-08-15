@@ -1,0 +1,23 @@
+local options = {
+  formatters_by_ft = {
+    lua = { "stylua" },
+    css = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    python = { "black", "ruff" },
+    go = { "gofumpt" },
+    c = { "clang-format" },
+    cpp = { "clang-format" },
+  },
+
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 800,
+    lsp_fallback = true,
+  },
+}
+
+return options

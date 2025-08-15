@@ -1,0 +1,7 @@
+configuration {
+  font:            "Open Sans 14";
+  icon-theme:      "Papirus";
+  icon-default:    "application-x-executable";
+  icon-format:     "svg,png";
+  element-icon:    true;
+}

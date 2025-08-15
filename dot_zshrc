@@ -1,0 +1,64 @@
+#!/bin/zsh
+# Created by @oivas000
+
+colorscript random
+#source ~/.local/bin/XChacha20_Poly1305.zsh
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+#export MODULAR_HOME="/home/oivas000/.modular"
+#export PATH="/home/oivas000/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$PATH:/opt/nvim/"
+export FZF_DEFAULT_COMMAND="fdfind --type f --hidden --exclude '.git' --exclude 'go' --exclude 'node_modules' --exclude '.vscode' "
+
+# alias
+alias eco='XChacha20_Poly1305'
+alias dco='XChacha20_Poly1305 -d'
+alias ec0x='XChacha20_Poly1305.zsh ec0x'
+alias ec9x='XChacha20_Poly1305.zsh ec9x'
+alias ec0z='XChacha20_Poly1305.zsh ec0z'
+alias ec9z='XChacha20_Poly1305.zsh ec9z'
+alias dcz='XChacha20_Poly1305.zsh dcz'
+alias dcx='XChacha20_Poly1305.zsh dcx'
+alias pdf2jpeg='pdftoppm -jpeg $1 $2'
+alias s='sudo'
+alias l='eza -alh'
+alias b='batcat'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias c='clear'
+
+# Save type history for completion and easier life
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt no_extended_history
+setopt hist_reduce_blanks
+setopt HIST_IGNORE_SPACE
+setopt AUTO_CD
+
+if [[ -f /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]] && [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  autoload -Uz compinit
+  compinit
+  source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+  zstyle ':completion:*' menu select
+  zstyle ':completion:*:complete:*' insert-unambiguous yes
+  zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+  zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+  zstyle ':autocomplete:tab:*' widget-style menu-select
+  zstyle ':autocomplete:*' min-input 2
+  bindkey $terminfo[kcuu1] up-line-or-history
+  bindkey $terminfo[kcud1] down-line-or-history
+  bindkey '^I' menu-complete
+  bindkey "$terminfo[kcbt]" reverse-menu-complete
+  source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  bindkey '^ ' autosuggest-accept
+fi
+
+# Starship
+eval "$(starship init zsh)"
