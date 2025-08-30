@@ -55,6 +55,7 @@ main = do
              "-theme ~/.config/rofi/launchers/type-2/style-2.rasi " ++
              "-config ~/.config/rofi/config.rasi " ++
              "-theme-str '* { font: \"JetBrainsMono Nerd Font 14\"; } window { border-radius: 0px; }'")
+        , ((myModMask, xK_o)          , spawn "~/.config/rofi/powermenu/type-2/powermenu.sh")
         , ((myModMask, xK_d)          , kill)
         , ((myModMask, xK_a)          , withFocused (windows . W.sink))
         , ((myModMask, xK_q)          , restart "xmonad" True)
